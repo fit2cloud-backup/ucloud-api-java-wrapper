@@ -1,4 +1,4 @@
-package com.fit2cloud.ucloud;
+package com.fit2cloud.ucloud.exception;
 
 /**
  * Created by chixq on 7/22/15.

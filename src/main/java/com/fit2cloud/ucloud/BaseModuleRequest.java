@@ -26,6 +26,8 @@ import java.util.UUID;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
+import com.fit2cloud.ucloud.exception.UCloudClientException;
+import com.fit2cloud.ucloud.exception.UCloudServiceException;
 import org.apache.commons.codec.binary.Base64;
 
 import com.google.gson.Gson;

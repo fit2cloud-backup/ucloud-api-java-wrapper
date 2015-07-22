@@ -1,5 +1,7 @@
 package com.fit2cloud.ucloud;
 
+import com.fit2cloud.ucloud.exception.UCloudClientException;
+
 /**
  * Created by chixq on 7/22/15.
  */
