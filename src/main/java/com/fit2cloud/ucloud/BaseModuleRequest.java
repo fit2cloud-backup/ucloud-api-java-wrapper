@@ -15,19 +15,15 @@ import java.net.URLEncoder;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.SimpleTimeZone;
-import java.util.UUID;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 import com.fit2cloud.ucloud.exception.UCloudClientException;
 import com.fit2cloud.ucloud.exception.UCloudServiceException;
+import com.fit2cloud.ucloud.utils.EncodeHelper;
 import org.apache.commons.codec.binary.Base64;
 
 import com.google.gson.Gson;
@@ -46,10 +42,9 @@ public class BaseModuleRequest {
 
     protected UCloudCredentials credentials;
 
-    public BaseModuleRequest(UCloudCredentials credentials, String endpoint, String apiVersion) {
+    public BaseModuleRequest(UCloudCredentials credentials, String endpoint) {
         this.credentials = credentials;
         this.endpoint = URI.create(endpoint);
-        this.apiVersion = apiVersion;
     }
 
     public String execute(String action, Map<String, String> parameters) throws UCloudClientException, UCloudServiceException {
@@ -94,47 +89,20 @@ public class BaseModuleRequest {
 
     protected void addCommonParams(String action, Map<String, String> parameters) {
         parameters.put("Action", action);
-        parameters.put("Version", apiVersion);
-        parameters.put("AccessKeyId", credentials.getPublicKey());
-        parameters.put("TimeStamp", formatIso8601Date(new Date()));
-        parameters.put("SignatureMethod", "HMAC-SHA1");
-        parameters.put("SignatureVersion", "1.0");
-        parameters.put("SignatureNonce", UUID.randomUUID().toString()); 
-        parameters.put("Format", RESPONSE_FORMAT);
-        parameters.put("Signature", computeSignature(parameters));
+        parameters.put("PublicKey", credentials.getPublicKey());
+        parameters.put("Signature", computeSignature(parameters, credentials.getPrivateKey()));
         
     }
 
-    protected String computeSignature(Map<String, String> parameters)  {
-        String[] sortedKeys = parameters.keySet().toArray(new String[]{});
-        Arrays.sort(sortedKeys);
-        final String SEPARATOR = "&";
-
-        StringBuilder canonicalizedQueryString = new StringBuilder();
-		String signature = "";
-		try {
-			for(String key : sortedKeys) {
-			    canonicalizedQueryString.append("&")
-			    .append(percentEncode(key)).append("=")
-			    .append(percentEncode(parameters.get(key)));
-			}
-			StringBuilder stringToSign = new StringBuilder();
-			stringToSign.append(httpMethod).append(SEPARATOR);
-			stringToSign.append(percentEncode("/")).append(SEPARATOR);
-			stringToSign.append(percentEncode(
-			        canonicalizedQueryString.toString().substring(1)));
-			signature = calculateSignature(credentials.getPrivateKey() + "&",
-			        stringToSign.toString());
-		} catch (UnsupportedEncodingException e) {
-		} catch (Exception e) {
-		}
-        return signature;
-    }
-
-    protected String formatIso8601Date(Date date) {
-        SimpleDateFormat df = new SimpleDateFormat(ISO8601_DATE_FORMAT);
-        df.setTimeZone(new SimpleTimeZone(0, "GMT"));
-        return df.format(date);
+    protected String computeSignature(Map<String, String> parameters, String privateKey)  {
+        final StringBuilder sb = new StringBuilder();
+        TreeMap<String, String> sortParams = new TreeMap<String, String>(parameters);
+        for (Entry<String, String> entry : sortParams.entrySet()) {
+            sb.append(entry.getKey()).append(entry.getValue());
+        }
+        System.out.println(sb.toString());
+        System.out.println(EncodeHelper.sha1(sb.append(privateKey).toString()));
+        return  EncodeHelper.sha1(sb.append(privateKey).toString());
     }
 
     protected String calculateSignature(String key, String stringToSign){
@@ -154,13 +122,6 @@ public class BaseModuleRequest {
         return new String(Base64.encodeBase64(signData));
     }
 
-    private String percentEncode(String value)
-            throws UnsupportedEncodingException{
-        return value != null ?
-                URLEncoder.encode(value, ENCODING).replace("+", "%20")
-                .replace("*", "%2A").replace("%7E", "~")
-                : null;
-    }
 
     private String paramsToQueryString(Map<String, String> params)
             throws UnsupportedEncodingException{
