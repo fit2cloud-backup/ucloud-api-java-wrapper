@@ -1,5 +1,7 @@
 package com.fit2cloud.ucloud.utils;
 
+import org.apache.commons.codec.binary.Base64;
+
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -48,6 +50,26 @@ public class EncodeHelper {
             e.printStackTrace();
         }
         return encryptText;
+    }
+
+    public static String base64(String inputText){
+        Base64 base64 = new Base64();
+        try {
+            return String.valueOf(base64.encode(inputText.getBytes(GlobalConst.CHARSET)));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String debase64(String inputText){
+        Base64 base64 = new Base64();
+        try {
+            return String.valueOf(base64.decode(inputText.getBytes(GlobalConst.CHARSET)));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     // 返回十六进制字符串

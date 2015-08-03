@@ -12,14 +12,6 @@ public class ErrorResponse {
         Action = action;
     }
 
-    public String getCode() {
-        return Code;
-    }
-
-    public void setCode(String code) {
-        Code = code;
-    }
-
     public String getMessage() {
         return Message;
     }
@@ -28,8 +20,16 @@ public class ErrorResponse {
         Message = message;
     }
 
+    public int getRetCode() {
+        return RetCode;
+    }
+
+    public void setRetCode(int retCode) {
+        RetCode = retCode;
+    }
+
     private String Action;
-    private String Code;
+    private int RetCode;
     private String Message;
 
 }
