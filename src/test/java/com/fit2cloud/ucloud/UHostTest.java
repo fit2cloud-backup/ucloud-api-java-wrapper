@@ -17,8 +17,8 @@ import org.junit.Test;
  * Email: xqiang.chi@samsung.com
  */
 public class UHostTest {
-    private String publicKey = "ucloudchilaoqi@gmail.com14377229700001785272260";
-    private String privateKey = "4a85a1100502a6fd56fbd9535962f0ac2eb30cb1";
+    private String publicKey = "xxxx";
+    private String privateKey = "xxxx";
     private UCloudCredentials credentials;
     private UCloudClient cloudClient;
 
@@ -44,7 +44,7 @@ public class UHostTest {
         System.out.println(response.getMessage());
     }
 
-    @Test
+//    @Test
     public void DescribeImageTest() throws UCloudClientException, UCloudServiceException {
         DescribeImageRequest request = new DescribeImageRequest();
         request.setRegion(Region.CN_NORTH_03);

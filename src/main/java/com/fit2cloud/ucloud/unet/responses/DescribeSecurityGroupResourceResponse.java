@@ -13,6 +13,7 @@ import java.util.List;
  * Email: xqiang.chi@samsung.com
  */
 public class DescribeSecurityGroupResourceResponse extends Response {
+
     private List<String> DataSet;
 
     public List<String> getDataSet() {
@@ -23,12 +24,12 @@ public class DescribeSecurityGroupResourceResponse extends Response {
         DataSet = dataSet;
     }
 
-
     @Override
     public String toString() {
-        return "DescribeSecurityGroupResourceResponse{" +
+        return "DescribeSecurityGroupResponse{" +
                 "DataSet=" + DataSet +
                 '}';
     }
+
 }
-        
+

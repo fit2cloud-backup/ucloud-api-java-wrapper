@@ -9,7 +9,7 @@ import java.util.List;
  * Time: 1:28 PM
  * Email: xqiang.chi@samsung.com
  */
-public class Image {
+public class ImageSet {
     private String ImageId;
     private String ImageName;
     private OsType OsType;
@@ -139,7 +139,7 @@ public class Image {
 
     @Override
     public String toString() {
-        return "Image{" +
+        return "ImageSet{" +
                 "ImageId='" + ImageId + '\'' +
                 ", ImageName='" + ImageName + '\'' +
                 ", OsType=" + OsType +

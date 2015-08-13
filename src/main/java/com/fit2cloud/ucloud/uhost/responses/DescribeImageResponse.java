@@ -1,7 +1,6 @@
 package com.fit2cloud.ucloud.uhost.responses;
 
 import com.fit2cloud.ucloud.Response;
-import com.fit2cloud.ucloud.uhost.model.Image;
 
 import java.util.List;
 
@@ -13,13 +12,13 @@ import java.util.List;
  * Email: xqiang.chi@samsung.com
  */
 public class DescribeImageResponse extends Response {
-    private List<Image> ImageSet;
+    private List<com.fit2cloud.ucloud.uhost.model.ImageSet> ImageSet;
 
-    public List<Image> getImageSet() {
+    public List<com.fit2cloud.ucloud.uhost.model.ImageSet> getImageSet() {
         return ImageSet;
     }
 
-    public void setImageSet(List<Image> imageSet) {
+    public void setImageSet(List<com.fit2cloud.ucloud.uhost.model.ImageSet> imageSet) {
         ImageSet = imageSet;
     }
 

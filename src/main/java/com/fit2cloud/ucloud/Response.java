@@ -3,7 +3,7 @@ package com.fit2cloud.ucloud;
 public class Response {
 	
 	private String Action;
-	private String RetCode;
+	private int RetCode;
 	private String Message;
 	private int TotalCount;
 
@@ -23,11 +23,11 @@ public class Response {
 		Action = action;
 	}
 
-	public String getRetCode() {
+	public int getRetCode() {
 		return RetCode;
 	}
 
-	public void setRetCode(String retCode) {
+	public void setRetCode(int retCode) {
 		RetCode = retCode;
 	}
 

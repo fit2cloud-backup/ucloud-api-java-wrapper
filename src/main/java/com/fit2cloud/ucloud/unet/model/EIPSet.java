@@ -6,7 +6,7 @@ import java.util.List;
  * Created by chixq on 8/2/15.
  */
 public class EIPSet {
-    private String EIP;
+    private String EIPId;
     private List<EIPAddr> EIPAddr;
 
     public List<com.fit2cloud.ucloud.unet.model.EIPAddr> getEIPAddr() {
@@ -17,18 +17,18 @@ public class EIPSet {
         this.EIPAddr = EIPAddr;
     }
 
-    public String getEIP() {
-        return EIP;
+    public String getEIPId() {
+        return EIPId;
     }
 
-    public void setEIP(String EIP) {
-        this.EIP = EIP;
+    public void setEIPId(String EIPId) {
+        this.EIPId = EIPId;
     }
 
     @Override
     public String toString() {
         return "EIPSet{" +
-                "EIPSet='" + EIP + '\'' +
+                "EIPSet='" + EIPId + '\'' +
                 ", EIPAddr=" + EIPAddr +
                 '}';
     }

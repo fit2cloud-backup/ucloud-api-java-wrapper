@@ -4,19 +4,19 @@
     <groupId>com.fit2cloud</groupId>
     <artifactId>ucloud-api-java-wrapper</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>0.1</version>
     <name>UCloud API Java封装库</name>
 
     <licenses>
         <license>
             <name>MIT</name>
-            <url>http://github.com/fernandezpablo85/scribe-java/blob/master/LICENSE.txt</url>
+            <url>https://github.com/zbh-fit2cloud/fit2cloud-cloud-plugins/blob/master/LICENSE.txt</url>
         </license>
     </licenses>
 
     <distributionManagement>
         <repository>
-            <id>fit2cloud-public</id>
+            <id>fit2cloud</id>
             <url>http://repository.fit2cloud.com/content/repositories/fit2cloud-public</url>
         </repository>
     </distributionManagement>

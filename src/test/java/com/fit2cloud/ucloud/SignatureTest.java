@@ -50,37 +50,4 @@ public class SignatureTest {
         System.out.println(response.getMessage());
 
     }
-
-    @Test
-    public void testSignTest() throws UCloudClientException, UCloudServiceException {
-
-        String officalPythonSignature = "7a517649e4e9da3b6c82c932d667daa1599ae3a1";
-        System.out.println(officalPythonSignature);
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("Region", "cn-north-03");
-        map.put("ImageId", "f43736e1-65a5-4bea-ad2e-8a46e18883c2");
-        map.put("CPU", "2");
-        map.put("Memory", "2048");
-        map.put("ChargeType", "Month");
-        map.put("DiskSpace", "10");
-        map.put("LoginMode", "Password");
-        map.put("Password", "UCloudexample01");
-        map.put("Name", "Host01");
-        map.put("Quantity", "1");
-        String publicKey = "ucloudsomeone@example.com1296235120854146120";
-        String privateKey = "46f09bb9fab4f12dfc160dae12273d5332b5debe";
-
-        String baseUrl = "http://api.ucloud.cn";
-        UCloudCredentials credentials = new UCloudCredentials(publicKey, privateKey);
-        BaseModuleRequest request = new BaseModuleRequest(credentials, baseUrl);
-        request.execute("CreateUHostInstance", map);
-    }
-
-    @Test
-    public void encodeTest() throws IOException {
-        URL url = new URL("https://api.ucloud.cn/?PublicKey=ucloudchilaoqi%40gmail.com14377229700001785272260&OsType=Linux&ImageType=Base&Region=cn-north-03&Action=DescribeImage&Offset=0&Signature=516350ed77db9fde75cacb29b1b720029b36c697");
-        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-        System.out.println(connection.getResponseCode());
-        InputStream content = connection.getInputStream();
-    }
 }

@@ -11,7 +11,7 @@ import com.fit2cloud.ucloud.Request;
  */
 public class TerminateUHostInstanceRequest extends Request {
     private String Region;
-    private String UHost;
+    private String UHostId;
 
     public String getRegion() {
         return Region;
@@ -21,19 +21,20 @@ public class TerminateUHostInstanceRequest extends Request {
         Region = region;
     }
 
-    public String getUHost() {
-        return UHost;
+    public String getUHostId() {
+        return UHostId;
     }
 
-    public void setUHost(String UHost) {
-        this.UHost = UHost;
+    public void setUHostId(String UHostId) {
+        this.UHostId = UHostId;
     }
 
     @Override
     public String toString() {
         return "TerminateUHostInstanceRequest{" +
                 "Region='" + Region + '\'' +
-                ", UHost='" + UHost + '\'' +
+                ", UHostId='" + UHostId + '\'' +
                 '}';
     }
 }
+

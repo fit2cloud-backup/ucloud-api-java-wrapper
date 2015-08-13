@@ -2,12 +2,8 @@ package com.fit2cloud.ucloud;
 
 import com.fit2cloud.ucloud.exception.UCloudClientException;
 import com.fit2cloud.ucloud.exception.UCloudServiceException;
-import com.fit2cloud.ucloud.unet.requests.AllocateEIPRequest;
-import com.fit2cloud.ucloud.unet.requests.DescribeEIPRequest;
-import com.fit2cloud.ucloud.unet.requests.UpdateEIPAttributeRequest;
-import com.fit2cloud.ucloud.unet.responses.AllocateEIPResponse;
-import com.fit2cloud.ucloud.unet.responses.DescribeEIPResponse;
-import com.fit2cloud.ucloud.unet.responses.UpdateEIPAttributeResponse;
+import com.fit2cloud.ucloud.unet.requests.*;
+import com.fit2cloud.ucloud.unet.responses.*;
 import com.fit2cloud.ucloud.utils.GlobalConst;
 import com.fit2cloud.ucloud.uhost.requests.*;
 import com.fit2cloud.ucloud.uhost.responses.*;
@@ -29,6 +25,11 @@ public class UCloudClient {
         this.request = new BaseModuleRequest(credentials, apiEndpoint);
     }
 
+    public UCloudClient(String publicKey, String privateKey) throws UCloudClientException {
+        UCloudCredentials uCloudCredentials = new UCloudCredentials(publicKey, privateKey);
+        this.request = new BaseModuleRequest(uCloudCredentials, GlobalConst.DEFAULT_BASE_URL);
+    }
+
 
     /* UHost API */
     public CreateUHostInstanceResponse CreateUHostInstance(CreateUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
@@ -43,6 +44,9 @@ public class UCloudClient {
         return gson.fromJson(this.request.execute("TerminateUHostInstance", request.toMap()), TerminateUHostInstanceResponse.class);
     }
 
+    public DescribeUHostInstanceResponse DescribeUHostInstance(DescribeUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DescribeUHostInstance", request.toMap()), DescribeUHostInstanceResponse.class);
+    }
     public ResizeUHostInstanceResponse ResizeUHostInstance (ResizeUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("ResizeUHostInstance", request.toMap()), ResizeUHostInstanceResponse.class);
     }
@@ -121,6 +125,14 @@ public class UCloudClient {
 
     public UpdateEIPAttributeResponse UpdateEIPAttribute(UpdateEIPAttributeRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("UpdateEIPAttribute", request.toMap()), UpdateEIPAttributeResponse.class);
+    }
+
+    public BindEIPResponse BindEIP(BindEIPRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("BindEIP", request.toMap()), BindEIPResponse.class);
+    }
+
+    public DescribeSecurityGroupResponse DescribeSecurityGroup(DescribeSecurityGroupRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DescribeSecurityGroup", request.toMap()), DescribeSecurityGroupResponse.class);
     }
 
 
