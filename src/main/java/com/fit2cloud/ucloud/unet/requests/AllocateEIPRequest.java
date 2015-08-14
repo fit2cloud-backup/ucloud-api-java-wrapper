@@ -13,49 +13,48 @@ import com.fit2cloud.ucloud.Request;
 public class AllocateEIPRequest extends Request {
     private String Region;
     private String OperatorName;
-    private int Bandwidth;
+    private Integer Bandwidth;
     private String ChargeType;
-    private int Quantity;
-
-
-    public void setRegion(String Region) {
-        this.Region = Region;
-    }
+    private Integer Quantity;
 
     public String getRegion() {
         return Region;
     }
 
-    public void setOperatorName(String OperatorName) {
-        this.OperatorName = OperatorName;
+    public void setRegion(String region) {
+        Region = region;
     }
 
     public String getOperatorName() {
         return OperatorName;
     }
 
-    public void setBandwidth(int Bandwidth) {
-        this.Bandwidth = Bandwidth;
+    public void setOperatorName(String operatorName) {
+        OperatorName = operatorName;
     }
 
-    public int getBandwidth() {
+    public Integer getBandwidth() {
         return Bandwidth;
     }
 
-    public void setChargeType(String ChargeType) {
-        this.ChargeType = ChargeType;
+    public void setBandwidth(Integer bandwidth) {
+        Bandwidth = bandwidth;
     }
 
     public String getChargeType() {
         return ChargeType;
     }
 
-    public void setQuantity(int Quantity) {
-        this.Quantity = Quantity;
+    public void setChargeType(String chargeType) {
+        ChargeType = chargeType;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return Quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        Quantity = quantity;
     }
 
     @Override

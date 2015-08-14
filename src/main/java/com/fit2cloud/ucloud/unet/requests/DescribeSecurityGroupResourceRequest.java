@@ -12,7 +12,7 @@ import com.fit2cloud.ucloud.Request;
  */
 public class DescribeSecurityGroupResourceRequest extends Request {
     private String Region;
-    private int GroupId;
+    private Integer GroupId;
 
 
     public void setRegion(String Region) {

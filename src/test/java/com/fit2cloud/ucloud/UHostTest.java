@@ -37,7 +37,7 @@ public class UHostTest {
         request.setDiskSpace(10);
         request.setCPU(2);
         request.setLoginMode(LoginMode.Password);
-        request.setPassword("Ilove5014");
+        request.setPassword("Password");
         request.setImageId("0163c0c5-7481-4319-9c");
         CreateUHostInstanceResponse response = cloudClient.CreateUHostInstance(request);
         System.out.println(response.getRetCode());

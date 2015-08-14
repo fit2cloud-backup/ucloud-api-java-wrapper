@@ -13,9 +13,9 @@ public class DescribeUHostInstanceRequest extends Request{
     private String Region;
     private List<String> UHostIds;
     private String Tag;
-    private int Offset;
-    private int Limit;
-    private int ProjectId;
+    private int Offset = 0;
+    private int Limit = 20;
+    private Integer ProjectId;
 
     public String getRegion() {
         return Region;
@@ -61,7 +61,7 @@ public class DescribeUHostInstanceRequest extends Request{
         return ProjectId;
     }
 
-    public void setProjectId(int projectId) {
+    public void setProjectId(Integer projectId) {
         ProjectId = projectId;
     }
 

@@ -28,8 +28,8 @@ public class SignatureTest {
         String officalPythonSignature = "7a517649e4e9da3b6c82c932d667daa1599ae3a1";
         System.out.println(officalPythonSignature);
         //官方测试签名用的公钥和私钥
-        String publicKey = "ucloudchilaoqi@gmail.com14377229700001785272260";
-        String privateKey = "4a85a1100502a6fd56fbd9535962f0ac2eb30cb1";
+        String publicKey = "ass";
+        String privateKey = "ass";
 
         String baseUrl = "http://api.ucloud.cn";
         UCloudCredentials credentials = new UCloudCredentials(publicKey, privateKey);
