@@ -80,13 +80,16 @@ public class DescribeUHostInstanceRequest extends Request{
     @Override
     public Map toMap() {
         Map<String, String> map = gson.fromJson(gson.toJson(this), new TypeToken<Map<String, String>>(){}.getType());
-        map.remove("UHostIds");
 
-        int i = 1;
-        for(String UHostId : UHostIds) {
-            map.put("UHostId." + i, UHostId);
-            i++;
+        if (UHostIds != null) {
+            int i = 1;
+            for(String UHostId : UHostIds) {
+                map.put("UHostId." + i, UHostId);
+                i++;
+            }
+            map.remove("UHostIds");
         }
+
         return map;
     }
 }

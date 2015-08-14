@@ -74,11 +74,15 @@ public class DescribeEIPRequest extends Request {
         map.put("Offset", String.valueOf(Offset));
         map.put("Limit", String.valueOf(Limit));
 
-        int count = 1;
-        for(String EIPId : EIPIds){
-            map.put("EIPIds." + count, EIPId);
-            count ++;
+        if (EIPIds != null) {
+            int count = 1;
+            for(String EIPId : EIPIds){
+                map.put("EIPIds." + count, EIPId);
+                count ++;
+            }
+            map.remove("EIPIds");
         }
+
         return map;
     }
 }
