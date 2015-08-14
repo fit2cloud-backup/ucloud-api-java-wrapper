@@ -135,6 +135,10 @@ public class UCloudClient {
         return gson.fromJson(this.request.execute("DescribeSecurityGroup", request.toMap()), DescribeSecurityGroupResponse.class);
     }
 
+    public ReleaseEIPResponse ReleaseEIP(ReleaseEIPRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("ReleaseEIP", request.toMap()), ReleaseEIPResponse.class);
+    }
+
 
 }
 
