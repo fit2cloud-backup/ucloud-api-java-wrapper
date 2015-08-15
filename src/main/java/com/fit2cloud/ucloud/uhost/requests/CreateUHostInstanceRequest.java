@@ -21,7 +21,6 @@ public class CreateUHostInstanceRequest extends Request {
     private String ImageId;
     private com.fit2cloud.ucloud.uhost.model.LoginMode LoginMode;
     private String Password;
-    private String BasedPassword;
     private String KeyPair;
     private int CPU;
     private int Memory;
@@ -64,12 +63,7 @@ public class CreateUHostInstanceRequest extends Request {
     }
 
     public void setPassword(String password) {
-        BasedPassword = EncodeHelper.base64(password);
-        Password = password;
-    }
-
-    public String getBasedPassword() {
-        return BasedPassword;
+        Password = EncodeHelper.base64(password);
     }
 
     public String getKeyPair() {
@@ -172,7 +166,6 @@ public class CreateUHostInstanceRequest extends Request {
         Type type = new TypeToken<HashMap<String, String>>() {
         }.getType();
         Map<String, String> map = gson.fromJson(gson.toJson(this), type);
-        map.remove("BasedPassword");
         map.remove("ProjectId");
         return map;
     }
