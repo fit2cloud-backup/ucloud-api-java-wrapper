@@ -7,21 +7,15 @@ import com.fit2cloud.ucloud.uhost.model.LoginMode;
 import com.fit2cloud.ucloud.uhost.model.Region;
 import com.fit2cloud.ucloud.uhost.requests.CreateUHostInstanceRequest;
 import com.fit2cloud.ucloud.uhost.responses.CreateUHostInstanceResponse;
+import com.fit2cloud.ucloud.utils.EncodeHelper;
 import org.junit.Test;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by chixq on 7/23/15.
  */
 public class SignatureTest {
 
-    @Test
+//    @Test
     public void testSign() throws UCloudClientException, UCloudServiceException {
 
         //官方签名结果
@@ -49,5 +43,11 @@ public class SignatureTest {
         System.out.println(response.getRetCode());
         System.out.println(response.getMessage());
 
+    }
+
+    @Test
+    public void base64Test() {
+        String originStr = "Cloudp1f2c";
+        System.out.println(EncodeHelper.base64(originStr));
     }
 }

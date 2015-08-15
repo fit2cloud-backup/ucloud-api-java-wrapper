@@ -53,23 +53,13 @@ public class EncodeHelper {
     }
 
     public static String base64(String inputText){
-        Base64 base64 = new Base64();
-        try {
-            return String.valueOf(base64.encode(inputText.getBytes(GlobalConst.CHARSET)));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return null;
+        byte[] byteEncodedStr = Base64.encodeBase64(inputText.getBytes());
+        return new String(byteEncodedStr);
     }
 
     public static String debase64(String inputText){
-        Base64 base64 = new Base64();
-        try {
-            return String.valueOf(base64.decode(inputText.getBytes(GlobalConst.CHARSET)));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return null;
+        byte[] byteDecodedStr = Base64.decodeBase64(inputText.getBytes());
+        return new String(byteDecodedStr);
     }
 
     // 返回十六进制字符串
