@@ -113,6 +113,10 @@ public class UCloudClient {
         return gson.fromJson(this.request.execute("DescribeUHostInstanceSnapshot", request.toMap()), DescribeUHostInstanceSnapshotResponse.class);
     }
 
+    public GetRegionsResponse GetRegions(GetRegionsRequest regionsRequest) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("GetRegion", regionsRequest.toMap()), GetRegionsResponse.class);
+    }
+
     /* UNet API */
 
     public AllocateEIPResponse AllocateEIP(AllocateEIPRequest request) throws UCloudClientException, UCloudServiceException {

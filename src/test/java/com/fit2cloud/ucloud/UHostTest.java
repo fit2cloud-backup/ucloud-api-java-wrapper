@@ -2,11 +2,12 @@ package com.fit2cloud.ucloud;
 
 import com.fit2cloud.ucloud.exception.UCloudClientException;
 import com.fit2cloud.ucloud.exception.UCloudServiceException;
+import com.fit2cloud.ucloud.uhost.model.*;
 import com.fit2cloud.ucloud.uhost.requests.CreateUHostInstanceRequest;
 import com.fit2cloud.ucloud.uhost.requests.DescribeImageRequest;
+import com.fit2cloud.ucloud.uhost.requests.GetRegionsRequest;
 import com.fit2cloud.ucloud.uhost.responses.CreateUHostInstanceResponse;
 import com.fit2cloud.ucloud.uhost.responses.DescribeImageResponse;
-import com.fit2cloud.ucloud.uhost.model.*;
 import org.junit.Test;
 
 /**
@@ -17,17 +18,22 @@ import org.junit.Test;
  * Email: xqiang.chi@samsung.com
  */
 public class UHostTest {
-    private String publicKey = "xxxx";
-    private String privateKey = "xxxx";
-    private UCloudCredentials credentials;
     private UCloudClient cloudClient;
 
     public UHostTest() throws UCloudClientException {
-        credentials = new UCloudCredentials(publicKey, privateKey);
+        String publicKey = System.getenv("UCLOUD_PUBLIC_KEY");
+        String privateKey = System.getenv("UCLOUD_PRIVATE_KEY");
+        UCloudCredentials credentials = new UCloudCredentials(publicKey, privateKey);
         cloudClient = new UCloudClient(credentials);
     }
 
     @Test
+    public void GetRegionsTest() throws UCloudClientException, UCloudServiceException {
+        GetRegionsRequest regionsRequest = new GetRegionsRequest();
+        System.out.println(cloudClient.GetRegions(regionsRequest).getRegions());
+
+    }
+//    @Test
     public void CreateUHostInstanceTest() throws UCloudClientException, UCloudServiceException {
         CreateUHostInstanceRequest request = new CreateUHostInstanceRequest();
         request.setRegion(Region.CN_NORTH_03);
