@@ -21,19 +21,19 @@ public class UHostTest {
     private UCloudClient cloudClient;
 
     public UHostTest() throws UCloudClientException {
-        String publicKey = System.getenv("UCLOUD_PUBLIC_KEY");
-        String privateKey = System.getenv("UCLOUD_PRIVATE_KEY");
+        String publicKey = "";
+        String privateKey = "";
         UCloudCredentials credentials = new UCloudCredentials(publicKey, privateKey);
         cloudClient = new UCloudClient(credentials);
     }
 
-    @Test
+//    @Test
     public void GetRegionsTest() throws UCloudClientException, UCloudServiceException {
         GetRegionsRequest regionsRequest = new GetRegionsRequest();
         System.out.println(cloudClient.GetRegions(regionsRequest).getRegions());
 
     }
-//    @Test
+    @Test
     public void CreateUHostInstanceTest() throws UCloudClientException, UCloudServiceException {
         CreateUHostInstanceRequest request = new CreateUHostInstanceRequest();
         request.setRegion(Region.CN_NORTH_03);
@@ -45,6 +45,7 @@ public class UHostTest {
         request.setLoginMode(LoginMode.Password);
         request.setPassword("Password");
         request.setImageId("0163c0c5-7481-4319-9c");
+        request.setNetworkId("subnet-5t3ghm");
         CreateUHostInstanceResponse response = cloudClient.CreateUHostInstance(request);
         System.out.println(response.getRetCode());
         System.out.println(response.getMessage());

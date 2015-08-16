@@ -143,6 +143,9 @@ public class UCloudClient {
         return gson.fromJson(this.request.execute("ReleaseEIP", request.toMap()), ReleaseEIPResponse.class);
     }
 
+    public DescribeVIPResponse DescribeVIP(DescribeVIPRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DescribeVIP", request.toMap()), DescribeVIPResponse.class);
+    }
 
 }
 

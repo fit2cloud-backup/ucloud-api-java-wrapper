@@ -2,13 +2,8 @@ package com.fit2cloud.ucloud;
 
 import com.fit2cloud.ucloud.exception.UCloudClientException;
 import com.fit2cloud.ucloud.exception.UCloudServiceException;
-import com.fit2cloud.ucloud.uhost.model.*;
-import com.fit2cloud.ucloud.uhost.requests.CreateUHostInstanceRequest;
-import com.fit2cloud.ucloud.uhost.requests.DescribeImageRequest;
-import com.fit2cloud.ucloud.uhost.responses.CreateUHostInstanceResponse;
-import com.fit2cloud.ucloud.uhost.responses.DescribeImageResponse;
 import com.fit2cloud.ucloud.unet.requests.DescribeSecurityGroupRequest;
-import com.fit2cloud.ucloud.unet.requests.DescribeSecurityGroupResourceRequest;
+import com.fit2cloud.ucloud.unet.requests.DescribeVIPRequest;
 import org.junit.Test;
 
 /**
@@ -19,18 +14,18 @@ import org.junit.Test;
  * Email: xqiang.chi@samsung.com
  */
 public class UNetTest {
-    private String publicKey = "";
-    private String privateKey = "";
-    private UCloudCredentials credentials;
+
     private UCloudClient cloudClient;
 
 
     public UNetTest() throws UCloudClientException {
-        credentials = new UCloudCredentials(publicKey, privateKey);
+        String publicKey = "";
+        String privateKey = "";
+        UCloudCredentials credentials = new UCloudCredentials(publicKey, privateKey);
         cloudClient = new UCloudClient(credentials);
     }
 
-    @Test
+//    @Test
     public void DescribeSecurityGroupResourceTest() throws UCloudClientException, UCloudServiceException {
         DescribeSecurityGroupRequest request = new DescribeSecurityGroupRequest();
         request.setRegion("cn-north-03");
@@ -38,4 +33,11 @@ public class UNetTest {
         System.out.println(cloudClient.DescribeSecurityGroup(request).toString());
     }
 
+    @Test
+    public void getVPCSubnetTest() throws UCloudClientException, UCloudServiceException {
+        DescribeVIPRequest describeVIPRequest = new DescribeVIPRequest();
+        describeVIPRequest.setRegion("cn-north-03");
+        System.out.println(cloudClient.DescribeVIP(describeVIPRequest));
+
+    }
 }
