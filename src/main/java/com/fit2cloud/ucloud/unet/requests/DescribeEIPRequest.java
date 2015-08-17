@@ -75,7 +75,7 @@ public class DescribeEIPRequest extends Request {
         map.put("Limit", String.valueOf(Limit));
 
         if (EIPIds != null) {
-            int count = 1;
+            int count = 0;
             for(String EIPId : EIPIds){
                 map.put("EIPIds." + count, EIPId);
                 count ++;

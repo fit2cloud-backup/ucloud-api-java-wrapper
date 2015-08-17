@@ -82,9 +82,9 @@ public class DescribeUHostInstanceRequest extends Request{
         Map<String, String> map = gson.fromJson(gson.toJson(this), new TypeToken<Map<String, String>>(){}.getType());
 
         if (UHostIds != null) {
-            int i = 1;
+            int i = 0;
             for(String UHostId : UHostIds) {
-                map.put("UHostId." + i, UHostId);
+                map.put("UHostIds." + i, UHostId);
                 i++;
             }
             map.remove("UHostIds");
