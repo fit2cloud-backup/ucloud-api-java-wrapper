@@ -25,6 +25,7 @@ public class CreateUHostInstanceRequest extends Request {
     private int CPU;
     private int Memory;
     private int DiskSpace;
+    private String UHostType;
     private String Name;
     private String NetworkId;
     private String SecurityGroupId;
@@ -159,6 +160,14 @@ public class CreateUHostInstanceRequest extends Request {
     }
 
     public void setProjectId(int projectId) {
+    }
+
+    public String getUHostType() {
+        return UHostType;
+    }
+
+    public void setUHostType(String UHostType) {
+        this.UHostType = UHostType;
     }
 
     @Override
