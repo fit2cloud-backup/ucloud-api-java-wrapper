@@ -147,5 +147,9 @@ public class UCloudClient {
         return gson.fromJson(this.request.execute("DescribeVIP", request.toMap()), DescribeVIPResponse.class);
     }
 
+    public SendSmsResponse SendSms(SendSmsRequest request)  throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("SendSms", request.toMap()), SendSmsResponse.class);
+    }
+
 }
 
