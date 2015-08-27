@@ -2,11 +2,13 @@ package com.fit2cloud.ucloud;
 
 import com.fit2cloud.ucloud.exception.UCloudClientException;
 import com.fit2cloud.ucloud.exception.UCloudServiceException;
+import com.fit2cloud.ucloud.uhost.requests.*;
+import com.fit2cloud.ucloud.uhost.responses.*;
+import com.fit2cloud.ucloud.ulb.requests.*;
+import com.fit2cloud.ucloud.ulb.responses.*;
 import com.fit2cloud.ucloud.unet.requests.*;
 import com.fit2cloud.ucloud.unet.responses.*;
 import com.fit2cloud.ucloud.utils.GlobalConst;
-import com.fit2cloud.ucloud.uhost.requests.*;
-import com.fit2cloud.ucloud.uhost.responses.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -150,6 +152,86 @@ public class UCloudClient {
     public SendSmsResponse SendSms(SendSmsRequest request)  throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("SendSms", request.toMap()), SendSmsResponse.class);
     }
+    
+//    ULB API
+    public CreateULBResponse CreateULB(CreateULBRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("CreateULB", request.toMap()), CreateULBResponse.class);
+    }
 
+    public DeleteULBResponse DeleteULB(DeleteULBRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DeleteULB", request.toMap()), DeleteULBResponse.class);
+    }
+
+    public DescribeULBResponse DescribeULB(DescribeULBRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DescribeULB", request.toMap()), DescribeULBResponse.class);
+    }
+
+    public UpdateULBAttributeResponse UpdateULBAttribute(UpdateULBAttributeRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("UpdateULBAttribute", request.toMap()), UpdateULBAttributeResponse.class);
+    }
+
+    public CreateVServerResponse CreateVServer(CreateVServerRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("CreateVServer", request.toMap()), CreateVServerResponse.class);
+    }
+
+    public DeleteVServerResponse DeleteVServer(DeleteVServerRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DeleteVServer", request.toMap()), DeleteVServerResponse.class);
+    }
+
+    public UpdateVServerAttributeResponse UpdateVServerAttribute(UpdateVServerAttributeRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("UpdateVServerAttribute", request.toMap()), UpdateVServerAttributeResponse.class);
+    }
+
+    public AllocateBackendResponse AllocateBackend(AllocateBackendRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("AllocateBackend", request.toMap()), AllocateBackendResponse.class);
+    }
+
+    public ReleaseBackendResponse ReleaseBackend(ReleaseBackendRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("ReleaseBackend", request.toMap()), ReleaseBackendResponse.class);
+    }
+
+    public UpdateBackendAttributeResponse UpdateBackendAttribute(UpdateBackendAttributeRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("UpdateBackendAttribute", request.toMap()), UpdateBackendAttributeResponse.class);
+    }
+
+    public CreateSSLResponse CreateSSL(CreateSSLRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("CreateSSL", request.toMap()), CreateSSLResponse.class);
+    }
+
+    public DeleteSSLResponse DeleteSSL(DeleteSSLRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DeleteSSL", request.toMap()), DeleteSSLResponse.class);
+    }
+
+    public BindSSLResponse BindSSL(BindSSLRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("BindSSL", request.toMap()), BindSSLResponse.class);
+    }
+
+    public DescribeSSLResponse DescribeSSL(DescribeSSLRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DescribeSSL", request.toMap()), DescribeSSLResponse.class);
+    }
+
+    public CreatePolicyGroupResponse CreatePolicyGroup(CreatePolicyGroupRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("CreatePolicyGroup", request.toMap()), CreatePolicyGroupResponse.class);
+    }
+
+    public DeletePolicyGroupResponse DeletePolicyGroup(DeletePolicyGroupRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DeletePolicyGroup", request.toMap()), DeletePolicyGroupResponse.class);
+    }
+
+    public DescribePolicyGroupResponse DescribePolicyGroup(DescribePolicyGroupRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DescribePolicyGroup", request.toMap()), DescribePolicyGroupResponse.class);
+    }
+
+    public UpdatePolicyGroupAttributeResponse UpdatePolicyGroupAttribute(UpdatePolicyGroupAttributeRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("UpdatePolicyGroupAttribute", request.toMap()), UpdatePolicyGroupAttributeResponse.class);
+    }
+
+    public CreatePolicyResponse CreatePolicy(CreatePolicyRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("CreatePolicy", request.toMap()), CreatePolicyResponse.class);
+    }
+
+    public DeletePolicyResponse DeletePolicy(DeletePolicyRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DeletePolicy", request.toMap()), DeletePolicyResponse.class);
+    }
 }
 
