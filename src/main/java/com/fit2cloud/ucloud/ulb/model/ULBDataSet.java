@@ -13,8 +13,8 @@ public class ULBDataSet {
     private String Name;
     private String Tag;
     private String Remark;
-    private Integer BandwithType;
-    private Integer Bandwith;
+    private Integer BandwidthType;
+    private Integer Bandwidth;
     private Integer CreateTime;
     private Integer ExpireTime;
     private List<Object> Resource;
@@ -61,20 +61,20 @@ public class ULBDataSet {
         Remark = remark;
     }
 
-    public Integer getBandwithType() {
-        return BandwithType;
+    public Integer getBandwidthType() {
+        return BandwidthType;
     }
 
-    public void setBandwithType(Integer bandwithType) {
-        BandwithType = bandwithType;
+    public void setBandwidthType(Integer bandwidthType) {
+        BandwidthType = bandwidthType;
     }
 
-    public Integer getBandwith() {
-        return Bandwith;
+    public Integer getBandwidth() {
+        return Bandwidth;
     }
 
-    public void setBandwith(Integer bandwith) {
-        Bandwith = bandwith;
+    public void setBandwidth(Integer bandwidth) {
+        Bandwidth = bandwidth;
     }
 
     public Integer getCreateTime() {
