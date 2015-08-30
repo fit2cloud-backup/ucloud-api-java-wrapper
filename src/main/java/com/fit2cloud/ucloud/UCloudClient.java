@@ -2,6 +2,8 @@ package com.fit2cloud.ucloud;
 
 import com.fit2cloud.ucloud.exception.UCloudClientException;
 import com.fit2cloud.ucloud.exception.UCloudServiceException;
+import com.fit2cloud.ucloud.udb.requests.*;
+import com.fit2cloud.ucloud.udb.responses.*;
 import com.fit2cloud.ucloud.uhost.requests.*;
 import com.fit2cloud.ucloud.uhost.responses.*;
 import com.fit2cloud.ucloud.ulb.requests.*;
@@ -23,7 +25,7 @@ public class UCloudClient {
         this.request = new BaseModuleRequest(credentials, GlobalConst.DEFAULT_BASE_URL);
     }
 
-    public UCloudClient(UCloudCredentials credentials, String apiEndpoint){
+    public UCloudClient(UCloudCredentials credentials, String apiEndpoint) {
         this.request = new BaseModuleRequest(credentials, apiEndpoint);
     }
 
@@ -38,80 +40,83 @@ public class UCloudClient {
         return gson.fromJson(this.request.execute("CreateUHostInstance", request.toMap()), CreateUHostInstanceResponse.class);
     }
 
-    public DescribeImageResponse DescribeImage (DescribeImageRequest request) throws UCloudClientException, UCloudServiceException {
+    public DescribeImageResponse DescribeImage(DescribeImageRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("DescribeImage", request.toMap()), DescribeImageResponse.class);
     }
 
-    public TerminateUHostInstanceResponse TerminateUHostInstance (TerminateUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
+    public TerminateUHostInstanceResponse TerminateUHostInstance(TerminateUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("TerminateUHostInstance", request.toMap()), TerminateUHostInstanceResponse.class);
     }
 
     public DescribeUHostInstanceResponse DescribeUHostInstance(DescribeUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("DescribeUHostInstance", request.toMap()), DescribeUHostInstanceResponse.class);
     }
-    public ResizeUHostInstanceResponse ResizeUHostInstance (ResizeUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
+
+    public ResizeUHostInstanceResponse ResizeUHostInstance(ResizeUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("ResizeUHostInstance", request.toMap()), ResizeUHostInstanceResponse.class);
     }
-    
-    public ReinstallUHostInstanceResponse ReinstallUHostInstance (ReinstallUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
+
+    public ReinstallUHostInstanceResponse ReinstallUHostInstance(ReinstallUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("ReinstallUHostInstance", request.toMap()), ReinstallUHostInstanceResponse.class);
     }
-    
-    public StartUHostInstanceResponse StartUHostInstance (StartUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
+
+    public StartUHostInstanceResponse StartUHostInstance(StartUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("StartUHostInstance", request.toMap()), StartUHostInstanceResponse.class);
     }
-    
-    public StopUHostInstanceResponse StopUHostInstance (StopUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
+
+    public StopUHostInstanceResponse StopUHostInstance(StopUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("StopUHostInstance", request.toMap()), StopUHostInstanceResponse.class);
     }
-    
-    public RebootUHostInstanceResponse RebootUHostInstance (RebootUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
+
+    public RebootUHostInstanceResponse RebootUHostInstance(RebootUHostInstanceRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("RebootUHostInstance", request.toMap()), RebootUHostInstanceResponse.class);
     }
 
-    public ResetUHostInstancePasswordResponse ResetUHostInstancePassword (ResetUHostInstancePasswordRequest request) throws UCloudClientException, UCloudServiceException {
+    public ResetUHostInstancePasswordResponse ResetUHostInstancePassword(ResetUHostInstancePasswordRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("ResetUHostInstancePassword", request.toMap()), ResetUHostInstancePasswordResponse.class);
     }
 
-    public ModifyUHostInstanceNameResponse ModifyUHostInstanceName (ModifyUHostInstanceNameRequest request) throws UCloudClientException, UCloudServiceException {     
+    public ModifyUHostInstanceNameResponse ModifyUHostInstanceName(ModifyUHostInstanceNameRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("ModifyUHostInstanceName", request.toMap()), ModifyUHostInstanceNameResponse.class);
     }
-    public ModifyUHostInstanceTagResponse ModifyUHostInstanceTag (ModifyUHostInstanceTagRequest request) throws UCloudClientException, UCloudServiceException {     
+
+    public ModifyUHostInstanceTagResponse ModifyUHostInstanceTag(ModifyUHostInstanceTagRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("ModifyUHostInstanceTag", request.toMap()), ModifyUHostInstanceTagResponse.class);
     }
-    public ModifyUHostInstanceRemarkResponse ModifyUHostInstanceRemark (ModifyUHostInstanceRemarkRequest request) throws UCloudClientException, UCloudServiceException {     
+
+    public ModifyUHostInstanceRemarkResponse ModifyUHostInstanceRemark(ModifyUHostInstanceRemarkRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("ModifyUHostInstanceRemark", request.toMap()), ModifyUHostInstanceRemarkResponse.class);
     }
-    
-    public GetUHostInstancePriceResponse GetUHostInstancePrice (GetUHostInstancePriceRequest request) throws UCloudClientException, UCloudServiceException {     
+
+    public GetUHostInstancePriceResponse GetUHostInstancePrice(GetUHostInstancePriceRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("GetUHostInstancePrice", request.toMap()), GetUHostInstancePriceResponse.class);
     }
-    
-    public GetUHostInstanceVncInfoResponse GetUHostInstanceVncInfo (GetUHostInstanceVncInfoRequest request) throws UCloudClientException, UCloudServiceException {     
+
+    public GetUHostInstanceVncInfoResponse GetUHostInstanceVncInfo(GetUHostInstanceVncInfoRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("GetUHostInstanceVncInfo", request.toMap()), GetUHostInstanceVncInfoResponse.class);
     }
-    
-    public CreateCustomImageResponse CreateCustomImage (CreateCustomImageRequest request) throws UCloudClientException, UCloudServiceException {
+
+    public CreateCustomImageResponse CreateCustomImage(CreateCustomImageRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("CreateCustomImage", request.toMap()), CreateCustomImageResponse.class);
     }
 
-    public TerminateCustomImageResponse TerminateCustomImage (TerminateCustomImageRequest request) throws UCloudClientException, UCloudServiceException {     
+    public TerminateCustomImageResponse TerminateCustomImage(TerminateCustomImageRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("TerminateCustomImage", request.toMap()), TerminateCustomImageResponse.class);
     }
-    
-    public AttachUDiskResponse AttachUDisk (AttachUDiskRequest request) throws UCloudClientException, UCloudServiceException {     
+
+    public AttachUDiskResponse AttachUDisk(AttachUDiskRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("AttachUDisk", request.toMap()), AttachUDiskResponse.class);
     }
-    
-    public  DetachUDiskResponse  DetachUDisk ( DetachUDiskRequest request) throws UCloudClientException, UCloudServiceException {
-        return gson.fromJson(this.request.execute(" DetachUDisk", request.toMap()),  DetachUDiskResponse.class);
+
+    public DetachUDiskResponse DetachUDisk(DetachUDiskRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute(" DetachUDisk", request.toMap()), DetachUDiskResponse.class);
     }
 
-    public CreateUHostInstanceSnapshotResponse CreateUHostInstanceSnapshot (CreateUHostInstanceSnapshotRequest request) throws UCloudClientException, UCloudServiceException {
+    public CreateUHostInstanceSnapshotResponse CreateUHostInstanceSnapshot(CreateUHostInstanceSnapshotRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("CreateUHostInstanceSnapshot", request.toMap()), CreateUHostInstanceSnapshotResponse.class);
     }
 
-    public DescribeUHostInstanceSnapshotResponse DescribeUHostInstanceSnapshot (DescribeUHostInstanceSnapshotRequest request) throws UCloudClientException, UCloudServiceException {
+    public DescribeUHostInstanceSnapshotResponse DescribeUHostInstanceSnapshot(DescribeUHostInstanceSnapshotRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("DescribeUHostInstanceSnapshot", request.toMap()), DescribeUHostInstanceSnapshotResponse.class);
     }
 
@@ -149,11 +154,11 @@ public class UCloudClient {
         return gson.fromJson(this.request.execute("DescribeVIP", request.toMap()), DescribeVIPResponse.class);
     }
 
-    public SendSmsResponse SendSms(SendSmsRequest request)  throws UCloudClientException, UCloudServiceException {
+    public SendSmsResponse SendSms(SendSmsRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("SendSms", request.toMap()), SendSmsResponse.class);
     }
-    
-//    ULB API
+
+    //    ULB API
     public CreateULBResponse CreateULB(CreateULBRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("CreateULB", request.toMap()), CreateULBResponse.class);
     }
@@ -233,5 +238,105 @@ public class UCloudClient {
     public DeletePolicyResponse DeletePolicy(DeletePolicyRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("DeletePolicy", request.toMap()), DeletePolicyResponse.class);
     }
+
+//    UDB API
+    
+    public UploadUDBParamGroupResponse UploadUDBParamGroup(UploadUDBParamGroupRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("UploadUDBParamGroup", request.toMap()), UploadUDBParamGroupResponse.class);
+    }
+
+    public UpdateUDBParamGroupResponse UpdateUDBParamGroup(UpdateUDBParamGroupRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("UpdateUDBParamGroup", request.toMap()), UpdateUDBParamGroupResponse.class);
+    }
+
+    public StopUDBInstanceResponse StopUDBInstance(StopUDBInstanceRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("StopUDBInstance", request.toMap()), StopUDBInstanceResponse.class);
+    }
+
+    public ModifyUDBInstanceNameResponse ModifyUDBInstanceName(ModifyUDBInstanceNameRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("ModifyUDBInstanceName", request.toMap()), ModifyUDBInstanceNameResponse.class);
+    }
+
+    public EditUDBBackupBlacklistResponse EditUDBBackupBlacklist(EditUDBBackupBlacklistRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("EditUDBBackupBlacklist", request.toMap()), EditUDBBackupBlacklistResponse.class);
+    }
+
+    public DescribeUDBTypeResponse DescribeUDBType(DescribeUDBTypeRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DescribeUDBType", request.toMap()), DescribeUDBTypeResponse.class);
+    }
+
+    public RestartUDBInstanceResponse RestartUDBInstance(RestartUDBInstanceRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("RestartUDBInstance", request.toMap()), RestartUDBInstanceResponse.class);
+    }
+
+    public PromoteUDBSlaveResponse PromoteUDBSlave(PromoteUDBSlaveRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("PromoteUDBSlave", request.toMap()), PromoteUDBSlaveResponse.class);
+    }
+
+    public StartUDBInstanceResponse StartUDBInstance(StartUDBInstanceRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("StartUDBInstance", request.toMap()), StartUDBInstanceResponse.class);
+    }
+
+    public DescribeUDBParamGroupResponse DescribeUDBParamGroup(DescribeUDBParamGroupRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DescribeUDBParamGroup", request.toMap()), DescribeUDBParamGroupResponse.class);
+    }
+
+    public DescribeUDBInstanceStateResponse DescribeUDBInstanceState(DescribeUDBInstanceStateRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DescribeUDBInstanceState", request.toMap()), DescribeUDBInstanceStateResponse.class);
+    }
+
+    public DescribeUDBInstanceResponse DescribeUDBInstance(DescribeUDBInstanceRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DescribeUDBInstance", request.toMap()), DescribeUDBInstanceResponse.class);
+    }
+
+    public DescribeUDBInstancePriceResponse DescribeUDBInstancePrice(DescribeUDBInstancePriceRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DescribeUDBInstancePrice", request.toMap()), DescribeUDBInstancePriceResponse.class);
+    }
+
+    public DescribeUDBBackupResponse DescribeUDBBackup(DescribeUDBBackupRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DescribeUDBBackup", request.toMap()), DescribeUDBBackupResponse.class);
+    }
+
+    public DescribeUDBBackupBlacklistResponse DescribeUDBBackupBlacklist(DescribeUDBBackupBlacklistRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DescribeUDBBackupBlacklist", request.toMap()), DescribeUDBBackupBlacklistResponse.class);
+    }
+
+    public DeleteUDBParamGroupResponse DeleteUDBParamGroup(DeleteUDBParamGroupRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DeleteUDBParamGroup", request.toMap()), DeleteUDBParamGroupResponse.class);
+    }
+
+    public DeleteUDBInstanceResponse DeleteUDBInstance(DeleteUDBInstanceRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DeleteUDBInstance", request.toMap()), DeleteUDBInstanceResponse.class);
+    }
+
+    public DeleteUDBBackupResponse DeleteUDBBackup(DeleteUDBBackupRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DeleteUDBBackup", request.toMap()), DeleteUDBBackupResponse.class);
+    }
+
+    public CreateUDBSlaveResponse CreateUDBSlave(CreateUDBSlaveRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("CreateUDBSlave", request.toMap()), CreateUDBSlaveResponse.class);
+    }
+
+    public CreateUDBReplicationInstanceResponse CreateUDBReplicationInstance(CreateUDBReplicationInstanceRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("CreateUDBReplicationInstance", request.toMap()), CreateUDBReplicationInstanceResponse.class);
+    }
+
+    public BackupUDBInstanceResponse BackupUDBInstance(BackupUDBInstanceRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("BackupUDBInstance", request.toMap()), BackupUDBInstanceResponse.class);
+    }
+
+    public CreateUDBParamGroupResponse CreateUDBParamGroup(CreateUDBParamGroupRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("CreateUDBParamGroup", request.toMap()), CreateUDBParamGroupResponse.class);
+    }
+
+    public CreateUDBInstanceResponse CreateUDBInstance(CreateUDBInstanceRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("CreateUDBInstance", request.toMap()), CreateUDBInstanceResponse.class);
+    }
+
+    public ClearUDBLogResponse ClearUDBLog(ClearUDBLogRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("ClearUDBLog", request.toMap()), ClearUDBLogResponse.class);
+    }
+
+
 }
 
