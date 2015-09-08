@@ -49,7 +49,6 @@ public class BaseModuleRequest {
             String query = paramsToQueryString(parameters);
             URL url = new URL(endpoint.toString() + "?" + query);
             DefaultHttpClient client = new DefaultHttpClient();
-            System.out.println(url.toString());
             HttpGet request = new HttpGet(url.toString());
             HttpResponse response = client.execute(request);
             if (response.getStatusLine().getStatusCode() >= 400) {
@@ -84,7 +83,6 @@ public class BaseModuleRequest {
         for (Entry<String, String> entry : sortParams.entrySet()) {
             sb.append(entry.getKey()).append(entry.getValue());
         }
-        System.out.println(sb.toString());
         return EncodeHelper.sha1(sb.append(privateKey).toString());
     }
 
