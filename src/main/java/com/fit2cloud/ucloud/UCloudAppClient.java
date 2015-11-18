@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 /**
- * Created by chixq on 7/22/15.
+ * Created by zhangbohan on 7/22/15.
  */
 public class UCloudAppClient {
     private BaseAppRequest request;
@@ -25,6 +25,11 @@ public class UCloudAppClient {
     public UCloudAppClient(String token,String secretKey) {
         this.request = new BaseAppRequest(token,secretKey, GlobalConst.DEFAULT_BASE_URL);
     }
+
+    public UCloudAppClient(String token,String secretKey,String endpoint) {
+        this.request = new BaseAppRequest(token,secretKey, endpoint);
+    }
+
 
 
     public GetUserInfoResponse getUserInfo(GetUserInfoRequest request) throws UCloudClientException, UCloudServiceException {
