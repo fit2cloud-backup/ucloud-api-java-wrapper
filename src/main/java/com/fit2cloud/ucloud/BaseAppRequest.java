@@ -77,7 +77,7 @@ public class BaseAppRequest {
     protected void addCommonParams(String action, Map<String, String> parameters) {
         parameters.put("Action", action);
         parameters.put("AccessToken", token);
-        parameters.put("Signature", computeSignature(parameters, token));
+        parameters.put("Signature", computeSignature(parameters, secretKey));
     }
 
     protected String computeSignature(Map<String, String> parameters, String privateKey) {
