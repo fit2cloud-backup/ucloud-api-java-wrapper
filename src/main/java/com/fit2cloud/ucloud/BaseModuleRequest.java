@@ -50,9 +50,9 @@ public class BaseModuleRequest {
             URL url = new URL(endpoint.toString() + "?" + query);
             DefaultHttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet(url.toString());
-            HttpResponse response = client.execute(request);
-            if (response.getStatusLine().getStatusCode() >= 400) {
-                stream = response.getEntity().getContent();
+            HttpResponse httpResponse = client.execute(request);
+            if (httpResponse.getStatusLine().getStatusCode() >= 400) {
+                stream = httpResponse.getEntity().getContent();
                 String message = readContent(stream);
                 ErrorResponse error = gson.fromJson(message, ErrorResponse.class);
                 UCloudServiceException exception = new UCloudServiceException(error.getMessage());
@@ -60,9 +60,17 @@ public class BaseModuleRequest {
                 exception.setAction(action);
                 throw exception;
             } else {
-                stream = response.getEntity().getContent();
+                stream = httpResponse.getEntity().getContent();
                 String message = readContent(stream);
-                return message;
+                Response response = gson.fromJson(message, Response.class);
+                if (response.getRetCode() != 0) {
+                    UCloudClientException exception = new UCloudClientException(response.getMessage());
+                    exception.setAction(action);
+                    exception.setRetCode(response.getRetCode());
+                    throw exception;
+                } else {
+                    return message;
+                }
             }
         } catch (IOException e) {
             throw new UCloudClientException("Failed to connect to UCloud:" + e.getMessage());
