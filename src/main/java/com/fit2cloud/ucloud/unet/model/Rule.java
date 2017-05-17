@@ -5,7 +5,7 @@ package com.fit2cloud.ucloud.unet.model;
  */
 public class Rule {
     private String SrcIP;
-    private Integer Priority;
+    private String Priority;
     private String ProtocolType;
     private String DstPort;
     private String RuleAction;
@@ -18,11 +18,11 @@ public class Rule {
         SrcIP = srcIP;
     }
 
-    public int getPriority() {
+    public String getPriority() {
         return Priority;
     }
 
-    public void setPriority(Integer priority) {
+    public void setPriority(String priority) {
         Priority = priority;
     }
 

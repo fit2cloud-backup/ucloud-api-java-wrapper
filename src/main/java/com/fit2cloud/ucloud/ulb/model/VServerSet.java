@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class VServerSet {
     private String VServerId;
-    private String VserverName;
+    private String VServerName;
     private String Protocol;
     private Integer FrontendPort;
     private String Method;
@@ -26,12 +26,12 @@ public class VServerSet {
         this.VServerId = VServerId;
     }
 
-    public String getVserverName() {
-        return VserverName;
+    public String getVServerName() {
+        return VServerName;
     }
 
-    public void setVserverName(String vserverName) {
-        VserverName = vserverName;
+    public void setVServerName(String VServerName) {
+        this.VServerName = VServerName;
     }
 
     public String getProtocol() {

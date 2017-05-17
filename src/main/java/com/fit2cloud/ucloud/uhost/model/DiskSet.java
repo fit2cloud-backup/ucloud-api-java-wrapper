@@ -6,7 +6,7 @@ package com.fit2cloud.ucloud.uhost.model;
 public class DiskSet {
     private String Type;
     private String DiskId;
-    private String Size;
+    private long Size;
 
     public String getType() {
         return Type;
@@ -24,11 +24,11 @@ public class DiskSet {
         DiskId = diskId;
     }
 
-    public String getSize() {
+    public long getSize() {
         return Size;
     }
 
-    public void setSize(String size) {
+    public void setSize(long size) {
         Size = size;
     }
 
@@ -37,7 +37,7 @@ public class DiskSet {
         return "DiskSet{" +
                 "Type='" + Type + '\'' +
                 ", DiskId='" + DiskId + '\'' +
-                ", Size='" + Size + '\'' +
+                ", Size=" + Size +
                 '}';
     }
 }

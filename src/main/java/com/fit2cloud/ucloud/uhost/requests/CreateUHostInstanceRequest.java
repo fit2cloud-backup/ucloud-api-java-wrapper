@@ -60,7 +60,7 @@ public class CreateUHostInstanceRequest extends Request {
     }
 
     public String getPassword() {
-        return Password;
+        return null == Password ? null : EncodeHelper.debase64(Password);
     }
 
     public void setPassword(String password) {
