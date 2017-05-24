@@ -79,7 +79,11 @@ public class DescribeUHostInstanceRequest extends Request{
 
     @Override
     public Map toMap() {
-        Map<String, String> map = gson.fromJson(gson.toJson(this), new TypeToken<Map<String, String>>(){}.getType());
+        Map<String, Object> map = gson.fromJson(gson.toJson(this), new TypeToken<Map<String, Object>>(){}.getType());
+
+        for(Map.Entry<String, Object> entry : map.entrySet()) {
+            map.put(entry.getKey(), entry.getValue().toString());
+        }
 
         if (UHostIds != null) {
             int i = 0;

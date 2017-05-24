@@ -124,6 +124,15 @@ public class UCloudClient {
         return gson.fromJson(this.request.execute("GetRegion", regionsRequest.toMap()), GetRegionsResponse.class);
     }
 
+    public GetMetricsResponse GetMetrics(GetMetricsRequest metricsRequest) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("GetMetric", metricsRequest.toMap()), GetMetricsResponse.class);
+    }
+
+    //获取资源当前各项监控数据
+    public GetMetricsResponse GetMetricsOverview(GetMetricsRequest metricsRequest) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("GetMetricOverview", metricsRequest.toMap()), GetMetricsResponse.class);
+    }
+
     /* UNet API */
 
     public AllocateEIPResponse AllocateEIP(AllocateEIPRequest request) throws UCloudClientException, UCloudServiceException {

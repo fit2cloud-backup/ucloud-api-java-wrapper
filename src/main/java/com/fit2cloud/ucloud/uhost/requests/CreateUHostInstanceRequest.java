@@ -18,11 +18,13 @@ import java.util.Map;
  */
 public class CreateUHostInstanceRequest extends Request {
     private String Region;
+    private String regionId;
     private String ImageId;
     private com.fit2cloud.ucloud.uhost.model.LoginMode LoginMode;
     private String Password;
     private String KeyPair;
     private int CPU;
+    private int cpuCount;
     private int Memory;
     private int DiskSpace;
     private String UHostType;
@@ -43,6 +45,14 @@ public class CreateUHostInstanceRequest extends Request {
         Region = region;
     }
 
+    public String getRegionId() {
+        return regionId;
+    }
+
+    public void setRegionId(String regionId) {
+        this.regionId = regionId;
+    }
+
     public String getImageId() {
         return ImageId;
     }
@@ -60,7 +70,7 @@ public class CreateUHostInstanceRequest extends Request {
     }
 
     public String getPassword() {
-        return null == Password ? null : EncodeHelper.debase64(Password);
+        return Password;
     }
 
     public void setPassword(String password) {
@@ -73,6 +83,14 @@ public class CreateUHostInstanceRequest extends Request {
 
     public void setKeyPair(String keyPair) {
         KeyPair = keyPair;
+    }
+
+    public int getCpuCount() {
+        return cpuCount;
+    }
+
+    public void setCpuCount(int cpuCount) {
+        this.cpuCount = cpuCount;
     }
 
     public int getCPU() {
