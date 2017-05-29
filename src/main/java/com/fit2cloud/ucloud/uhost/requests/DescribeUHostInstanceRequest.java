@@ -3,6 +3,7 @@ package com.fit2cloud.ucloud.uhost.requests;
 import com.fit2cloud.ucloud.Request;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -79,16 +80,24 @@ public class DescribeUHostInstanceRequest extends Request{
 
     @Override
     public Map toMap() {
-        Map<String, Object> map = gson.fromJson(gson.toJson(this), new TypeToken<Map<String, Object>>(){}.getType());
-
-        for(Map.Entry<String, Object> entry : map.entrySet()) {
-            map.put(entry.getKey(), entry.getValue().toString());
+        //当UHostIds的size大于1时用原先的方法会出现Json解析的异常因为UHostIds在Json中时数组，而new TypeToken<Map<String, String>中为String，
+        //这就导致冲突了，但是换成new TypeToken<Map<String, Object>又回引发新的Bug，正常的String值最后返回的不是字面值而是java.lang.Object
+        //所以这里对UHosIds进行处理，但是这种处理目前好像没有必要，因为目前没有出现UHostIds.size大于1的情况，因为目前的需求时要么获取所有虚拟机要么
+        //获取某个虚拟机，但是这里还是处理一下。
+        if(null != UHostIds && UHostIds.size() > 1) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for(String UHostId : UHostIds) {
+                stringBuilder.append(UHostId + " ");
+            }
+            UHostIds = Collections.singletonList(stringBuilder.substring(0, stringBuilder.length() - 1));
         }
+        Map<String, String> map = gson.fromJson(gson.toJson(this), new TypeToken<Map<String, String>>(){}.getType());
 
         if (UHostIds != null) {
-            int i = 0;
-            for(String UHostId : UHostIds) {
-                map.put("UHostIds." + i, UHostId);
+            int i = 1;
+            String[] uHostIds = UHostIds.get(0).split(" ");
+            for(String uHostId : uHostIds) {
+                map.put("UHostId." + i, uHostId);
                 i++;
             }
             map.remove("UHostIds");
@@ -96,4 +105,24 @@ public class DescribeUHostInstanceRequest extends Request{
 
         return map;
     }
+
+//    @Override
+//    public Map toMap() {
+//        Map<String, Object> map = gson.fromJson(gson.toJson(this), new TypeToken<Map<String, Object>>(){}.getType());
+//
+//        for(Map.Entry<String, Object> entry : map.entrySet()) {
+//            map.put(entry.getKey(), entry.getValue().toString());
+//        }
+//
+//        if (UHostIds != null) {
+//            int i = 0;
+//            for(String UHostId : UHostIds) {
+//                map.put("UHostIds." + i, UHostId);
+//                i++;
+//            }
+//            map.remove("UHostIds");
+//        }
+//
+//        return map;
+//    }
 }
