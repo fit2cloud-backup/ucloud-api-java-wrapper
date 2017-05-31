@@ -89,7 +89,7 @@ public class DescribeUHostInstanceRequest extends Request{
 
     @Override
     public Map toMap() {
-        if(null != UHostIds) {
+        if(null != UHostIds && UHostIds.size() > 0) {
             StringBuilder stringBuilder = new StringBuilder();
             for(String UHostId : UHostIds) {
                 stringBuilder.append(UHostId + " ");
@@ -100,13 +100,14 @@ public class DescribeUHostInstanceRequest extends Request{
         Map<String, String> map = gson.fromJson(gson.toJson(this), new TypeToken<Map<String, String>>(){}.getType());
 
         if (UHostIdsStr != null) {
-            int i = 1;
+            int i = 0;
             String[] uHostIds = UHostIdsStr.split(" ");
             for(String uHostId : uHostIds) {
-                map.put("UHostId." + i, uHostId);
+                map.put("UHostIds." + i, uHostId);
                 i++;
             }
             map.remove("UHostIds");
+            map.remove("UHostIdsStr");
         }
 
         return map;
