@@ -5,6 +5,7 @@ import com.fit2cloud.ucloud.Request;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -93,14 +94,21 @@ public class UpdateSecurityGroupRequest extends Request {
 
     @Override
     public Map toMap() {
+    	List<String> ruleList = null;
+    	if(Rule != null) {
+    		ruleList = new ArrayList<String>(Rule);
+    		Rule = null;
+    	}
         Type type = new TypeToken<HashMap<String, String>>(){}.getType();
         Map<String, String> map = new HashMap<String, String>();
         map.putAll((Map<? extends String, ? extends String>) gson.fromJson(gson.toJson(this), type));
         map.remove("Rule");
 
-        int count = 1;
-        for(String Rule: this.Rule){
-            map.put("Rule." + count, Rule);
+        if(ruleList != null) {
+        	int count = 1;
+        	for(String Rule: ruleList){
+        		map.put("Rule." + count, Rule);
+        	}
         }
 
         return map;

@@ -4,6 +4,7 @@ package com.fit2cloud.ucloud.ulb.requests;
 import com.fit2cloud.ucloud.Request;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -83,11 +84,16 @@ public class CreatePolicyRequest extends Request {
 
     @Override
     public Map toMap() {
+    	List<String> endList = null;
+    	if(BackendIds != null) {
+    		endList = new ArrayList<String>(BackendIds);
+    		BackendIds = null;
+    	}
         Map<String, String> map = gson.fromJson(gson.toJson(this), new TypeToken<Map<String, String>>(){}.getType());
 
-        if (BackendIds != null) {
+        if (endList != null) {
             int i = 0;
-            for(String backendId : BackendIds) {
+            for(String backendId : endList) {
                 map.put("BackendId." + i, backendId);
                 i++;
             }

@@ -4,6 +4,7 @@ package com.fit2cloud.ucloud.unet.requests;
 import com.fit2cloud.ucloud.Request;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -64,13 +65,20 @@ public class CreateSecurityGroupRequest extends Request {
 
     @Override
     public Map toMap() {
+    	List<String> ruleList = null;
+    	if(Rule != null) {
+    		ruleList = new ArrayList<String>(Rule);
+    		Rule = null;
+    	}
         Map<String, String> map = gson.fromJson(gson.toJson(this), new TypeToken<Map<String, String>>() {
         }.getType());
         map.remove("Rule");
-        int i = 1;
-        for (String rule : Rule) {
-            map.put("Rule." + i, rule);
-            i++;
+        if(ruleList != null) {
+        	int i = 1;
+        	for (String rule : ruleList) {
+        		map.put("Rule." + i, rule);
+        		i++;
+        	}
         }
 
         return map;

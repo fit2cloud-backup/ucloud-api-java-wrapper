@@ -5,6 +5,7 @@ import com.fit2cloud.ucloud.Request;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,6 +68,11 @@ public class DescribeEIPRequest extends Request {
 
     @Override
     public Map<String, String> toMap() {
+    	List<String> eipList = null;
+    	if(EIPIds != null) {
+    		eipList = new ArrayList<String>(EIPIds);
+    		EIPIds = null;
+    	}
         Type type = new TypeToken<HashMap<String, String>>(){}.getType();
         Map<String, String> map = new HashMap<String, String>();
 
@@ -74,9 +80,9 @@ public class DescribeEIPRequest extends Request {
         map.put("Offset", String.valueOf(Offset));
         map.put("Limit", String.valueOf(Limit));
 
-        if (EIPIds != null) {
+        if (eipList != null) {
             int count = 0;
-            for(String EIPId : EIPIds){
+            for(String EIPId : eipList){
                 map.put("EIPIds." + count, EIPId);
                 count ++;
             }
