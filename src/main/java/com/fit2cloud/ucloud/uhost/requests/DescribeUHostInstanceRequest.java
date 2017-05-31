@@ -3,7 +3,7 @@ package com.fit2cloud.ucloud.uhost.requests;
 import com.fit2cloud.ucloud.Request;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,19 +13,10 @@ import java.util.Map;
 public class DescribeUHostInstanceRequest extends Request{
     private String Region;
     private List<String> UHostIds;
-    private String UHostIdsStr;
     private String Tag;
     private int Offset = 0;
     private int Limit = 20;
     private Integer ProjectId;
-
-    public String getUHostIdsStr() {
-        return UHostIdsStr;
-    }
-
-    public void setUHostIdsStr(String UHostIdsStr) {
-        this.UHostIdsStr = UHostIdsStr;
-    }
 
     public String getRegion() {
         return Region;
@@ -89,47 +80,22 @@ public class DescribeUHostInstanceRequest extends Request{
 
     @Override
     public Map toMap() {
-        if(null != UHostIds && UHostIds.size() > 0) {
-            StringBuilder stringBuilder = new StringBuilder();
-            for(String UHostId : UHostIds) {
-                stringBuilder.append(UHostId + " ");
-            }
+        List<String> tmp = null;
+        if(null != UHostIds) {
+            tmp = new ArrayList<String>(UHostIds);
             UHostIds = null;
-            UHostIdsStr = stringBuilder.substring(0, stringBuilder.length() - 1);
         }
         Map<String, String> map = gson.fromJson(gson.toJson(this), new TypeToken<Map<String, String>>(){}.getType());
 
-        if (UHostIdsStr != null) {
+        if (tmp != null) {
             int i = 0;
-            String[] uHostIds = UHostIdsStr.split(" ");
-            for(String uHostId : uHostIds) {
+            for(String uHostId : tmp) {
                 map.put("UHostIds." + i, uHostId);
                 i++;
             }
             map.remove("UHostIds");
-            map.remove("UHostIdsStr");
         }
 
         return map;
     }
-
-//    @Override
-//    public Map toMap() {
-//        Map<String, Object> map = gson.fromJson(gson.toJson(this), new TypeToken<Map<String, Object>>(){}.getType());
-//
-//        for(Map.Entry<String, Object> entry : map.entrySet()) {
-//            map.put(entry.getKey(), entry.getValue().toString());
-//        }
-//
-//        if (UHostIds != null) {
-//            int i = 0;
-//            for(String UHostId : UHostIds) {
-//                map.put("UHostIds." + i, UHostId);
-//                i++;
-//            }
-//            map.remove("UHostIds");
-//        }
-//
-//        return map;
-//    }
 }
