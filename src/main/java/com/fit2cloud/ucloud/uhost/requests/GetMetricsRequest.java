@@ -11,6 +11,7 @@ import java.util.Map;
  */
 public class GetMetricsRequest extends Request {
     private String Region;
+    private String Zone;
     private String ResourceId;
     private String ResourceType;
     private Long BeginTime;
@@ -20,6 +21,14 @@ public class GetMetricsRequest extends Request {
     private String MetricNames;
     private Integer Limit;
     private Integer Offset;
+
+    public String getZone() {
+        return Zone;
+    }
+
+    public void setZone(String zone) {
+        Zone = zone;
+    }
 
     public String getRegion() {
         return Region;

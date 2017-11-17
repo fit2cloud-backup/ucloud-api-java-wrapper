@@ -133,11 +133,11 @@ public class UserInfo {
         UserAddress = userAddress;
     }
 
-    public String getUserTypeName(Integer userType){
-        return userTypeMap.getOrDefault(userType, "个人");
-    }
-
-    public String getIndustryTypeName(Integer industryType){
-        return industryTypeMap.getOrDefault(industryType,"其他");
-    }
+//    public String getUserTypeName(Integer userType){
+//        return userTypeMap.getOrDefault(userType, "个人");
+//    }
+//
+//    public String getIndustryTypeName(Integer industryType){
+//        return industryTypeMap.getOrDefault(industryType,"其他");
+//    }
 }

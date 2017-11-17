@@ -4,6 +4,8 @@ import com.fit2cloud.ucloud.exception.UCloudClientException;
 import com.fit2cloud.ucloud.exception.UCloudServiceException;
 import com.fit2cloud.ucloud.udb.requests.*;
 import com.fit2cloud.ucloud.udb.responses.*;
+import com.fit2cloud.ucloud.udisk.requests.DescribeUDiskRequest;
+import com.fit2cloud.ucloud.udisk.responses.DescribeUDiskResponse;
 import com.fit2cloud.ucloud.uhost.requests.*;
 import com.fit2cloud.ucloud.uhost.responses.*;
 import com.fit2cloud.ucloud.ulb.requests.*;
@@ -344,6 +346,10 @@ public class UCloudClient {
 
     public ClearUDBLogResponse ClearUDBLog(ClearUDBLogRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("ClearUDBLog", request.toMap()), ClearUDBLogResponse.class);
+    }
+
+    public DescribeUDiskResponse DescribeUDisk(DescribeUDiskRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DescribeUDisk",request.toMap()),DescribeUDiskResponse.class);
     }
 
 

@@ -7,13 +7,14 @@ public class Regions {
     private int RegionId;
     private String RegionName;
     private boolean isDefault;
-
+    private String Zone;
     @Override
     public String toString() {
         return "Regions{" +
                 "RegionId=" + RegionId +
                 ", RegionName='" + RegionName + '\'' +
                 ", isDefault=" + isDefault +
+                ", Zone=" + Zone +
                 '}';
     }
 
@@ -39,5 +40,13 @@ public class Regions {
 
     public void setIsDefault(boolean isDefault) {
         this.isDefault = isDefault;
+    }
+
+    public String getZone() {
+        return Zone;
+    }
+
+    public void setZone(String zone) {
+        Zone = zone;
     }
 }

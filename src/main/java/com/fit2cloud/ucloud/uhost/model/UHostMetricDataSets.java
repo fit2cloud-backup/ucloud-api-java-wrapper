@@ -10,6 +10,24 @@ public class UHostMetricDataSets {
     private List<UHostMetricItem> MemUsage;
     private List<UHostMetricItem> NICIn;
     private List<UHostMetricItem> NICOut;
+    private List<UHostMetricItem> IORead;
+    private List<UHostMetricItem> IOWrite;
+
+    public List<UHostMetricItem> getIORead() {
+        return IORead;
+    }
+
+    public void setIORead(List<UHostMetricItem> IORead) {
+        this.IORead = IORead;
+    }
+
+    public List<UHostMetricItem> getIOWrite() {
+        return IOWrite;
+    }
+
+    public void setIOWrite(List<UHostMetricItem> IOWrite) {
+        this.IOWrite = IOWrite;
+    }
 
     public List<UHostMetricItem> getCPUUtilization() {
         return CPUUtilization;
