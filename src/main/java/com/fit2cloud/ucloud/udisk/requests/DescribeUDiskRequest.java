@@ -19,6 +19,16 @@ public class DescribeUDiskRequest extends Request{
 
     private String DiskType;
 
+    private String az_group;
+
+    public String getAz_group() {
+        return az_group;
+    }
+
+    public void setAz_group(String az_group) {
+        this.az_group = az_group;
+    }
+
     public String getRegion() {
         return Region;
     }
