@@ -8,14 +8,30 @@ public class Regions {
     private String RegionName;
     private boolean isDefault;
     private String Zone;
+    private String Region;
+
     @Override
     public String toString() {
         return "Regions{" +
-                "RegionId=" + RegionId +
+                "Region=" + Region +
+                ",RegionId=" + RegionId +
                 ", RegionName='" + RegionName + '\'' +
                 ", isDefault=" + isDefault +
                 ", Zone=" + Zone +
                 '}';
+    }
+
+
+    public void setDefault(boolean aDefault) {
+        isDefault = aDefault;
+    }
+
+    public String getRegion() {
+        return Region;
+    }
+
+    public void setRegion(String region) {
+        Region = region;
     }
 
     public int getRegionId() {
