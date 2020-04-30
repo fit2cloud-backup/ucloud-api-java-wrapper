@@ -16,7 +16,16 @@ public class DescribeUHostInstanceRequest extends Request{
     private String Tag;
     private int Offset = 0;
     private int Limit = 20;
-    private Integer ProjectId;
+    private String ProjectId;
+    private String Zone;
+
+    public String getZone() {
+        return Zone;
+    }
+
+    public void setZone(String zone) {
+        Zone = zone;
+    }
 
     public String getRegion() {
         return Region;
@@ -58,11 +67,11 @@ public class DescribeUHostInstanceRequest extends Request{
         Limit = limit;
     }
 
-    public int getProjectId() {
+    public String getProjectId() {
         return ProjectId;
     }
 
-    public void setProjectId(Integer projectId) {
+    public void setProjectId(String projectId) {
         ProjectId = projectId;
     }
 

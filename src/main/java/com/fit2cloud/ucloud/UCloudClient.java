@@ -126,6 +126,10 @@ public class UCloudClient {
         return gson.fromJson(this.request.execute("GetRegion", regionsRequest.toMap()), GetRegionsResponse.class);
     }
 
+    public GetProjectIdResponse GetProjects(GetProjectRequest getProjectRequest) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("GetProjectList", getProjectRequest.toMap()), GetProjectIdResponse.class);
+    }
+
     public GetMetricsResponse GetMetrics(GetMetricsRequest metricsRequest) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("GetMetric", metricsRequest.toMap()), GetMetricsResponse.class);
     }
