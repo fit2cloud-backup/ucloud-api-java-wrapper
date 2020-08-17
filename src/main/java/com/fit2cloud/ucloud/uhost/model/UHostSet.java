@@ -23,6 +23,7 @@ public class UHostSet {
     private List<DiskSet> DiskSet;
     private List<IPSet> IPSet;
     private String NetCapability;
+    private String Zone;
 
     public String getUHostId() {
         return UHostId;
@@ -161,6 +162,14 @@ public class UHostSet {
         NetCapability = netCapability;
     }
 
+    public String getZone() {
+        return Zone;
+    }
+
+    public void setZone(String zone) {
+        Zone = zone;
+    }
+
     @Override
     public String toString() {
         return "UHostSet{" +
@@ -181,6 +190,7 @@ public class UHostSet {
                 ", DiskSet=" + DiskSet +
                 ", IPSet=" + IPSet +
                 ", NetCapability='" + NetCapability + '\'' +
+                ", Zone='" + Zone + '\'' +
                 '}';
     }
 }
