@@ -35,6 +35,8 @@ public class DescribeUDIskDataSet {
 
     private String UDataArkMode;
 
+    private String Zone;
+
     private int SnapshotCount;
 
     private int SnapshotLimit;
@@ -196,5 +198,13 @@ public class DescribeUDIskDataSet {
 
     public void setSnapshotLimit(int snapshotLimit) {
         SnapshotLimit = snapshotLimit;
+    }
+
+    public String getZone() {
+        return Zone;
+    }
+
+    public void setZone(String zone) {
+        Zone = zone;
     }
 }
