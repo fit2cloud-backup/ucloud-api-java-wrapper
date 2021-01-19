@@ -37,7 +37,7 @@ public class UHostTest {
     public void CreateUHostInstanceTest() throws UCloudClientException, UCloudServiceException {
         CreateUHostInstanceRequest request = new CreateUHostInstanceRequest();
         request.setRegion(Region.CN_NORTH_03);
-        request.setChargeType(ChargeType.Month);
+//        request.setChargeType(ChargeType.Month);
         request.setQuantity(1);
         request.setMemory(2048);
         request.setDiskSpace(10);

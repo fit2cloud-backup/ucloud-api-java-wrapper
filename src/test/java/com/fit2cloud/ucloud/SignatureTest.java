@@ -33,7 +33,7 @@ public class SignatureTest {
         request.setImageId("f43736e1-65a5-4bea-ad2e-8a46e18883c2");
         request.setCPU(2);
         request.setMemory(2048);
-        request.setChargeType(ChargeType.Month);
+//        request.setChargeType(ChargeType.Month);
         request.setDiskSpace(10);
         request.setLoginMode(LoginMode.Password);
         request.setPassword("UCloudexample01");
