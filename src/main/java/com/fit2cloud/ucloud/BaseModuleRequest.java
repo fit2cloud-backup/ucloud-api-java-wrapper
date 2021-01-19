@@ -34,16 +34,16 @@ public class BaseModuleRequest {
         this.endpoint = URI.create(endpoint);
     }
 
-    public String execute(String action, Map<String, String> parameters) throws UCloudClientException, UCloudServiceException {
+    public String execute(String action, Map<String, Object> parameters) throws UCloudClientException, UCloudServiceException {
         assert (action != null && action.length() > 0);
         if (parameters == null) {
-            parameters = new HashMap<String, String>();
+            parameters = new HashMap<String, Object>();
         }
         addCommonParams(action, parameters);
         return sendRequest(action, parameters);
     }
 
-    private String sendRequest(String action, Map<String, String> parameters) throws UCloudClientException, UCloudServiceException {
+    private String sendRequest(String action, Map<String, Object> parameters) throws UCloudClientException, UCloudServiceException {
         InputStream stream = null;
         try {
             String query = paramsToQueryString(parameters);
@@ -79,22 +79,22 @@ public class BaseModuleRequest {
         }
     }
 
-    protected void addCommonParams(String action, Map<String, String> parameters) {
+    protected void addCommonParams(String action, Map<String, Object> parameters) {
         parameters.put("Action", action);
         parameters.put("PublicKey", credentials.getPublicKey());
         parameters.put("Signature", computeSignature(parameters, credentials.getPrivateKey()));
     }
 
-    protected String computeSignature(Map<String, String> parameters, String privateKey) {
+    protected String computeSignature(Map<String, Object> parameters, String privateKey) {
         final StringBuilder sb = new StringBuilder();
-        TreeMap<String, String> sortParams = new TreeMap<String, String>(parameters);
-        for (Entry<String, String> entry : sortParams.entrySet()) {
+        TreeMap<String, Object> sortParams = new TreeMap<String, Object>(parameters);
+        for (Entry<String, Object> entry : sortParams.entrySet()) {
             sb.append(entry.getKey()).append(entry.getValue());
         }
         return EncodeHelper.sha1(sb.append(privateKey).toString());
     }
 
-    private String paramsToQueryString(Map<String, String> params)
+    private String paramsToQueryString(Map<String, Object> params)
             throws UnsupportedEncodingException {
         if (params == null || params.size() == 0) {
             return null;
@@ -102,9 +102,9 @@ public class BaseModuleRequest {
 
         StringBuilder paramString = new StringBuilder();
         boolean first = true;
-        for (Entry<String, String> p : params.entrySet()) {
+        for (Entry<String, Object> p : params.entrySet()) {
             String key = p.getKey();
-            String val = p.getValue();
+            String val = p.getValue().toString();
             if (!first) {
                 paramString.append("&");
             }

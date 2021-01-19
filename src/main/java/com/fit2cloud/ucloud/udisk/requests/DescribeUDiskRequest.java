@@ -19,6 +19,8 @@ public class DescribeUDiskRequest extends Request{
 
     private String DiskType;
 
+    private String Zone;
+
     private String az_group;
 
     public String getAz_group() {
@@ -75,5 +77,13 @@ public class DescribeUDiskRequest extends Request{
 
     public void setDiskType(String diskType) {
         DiskType = diskType;
+    }
+
+    public String getZone() {
+        return Zone;
+    }
+
+    public void setZone(String zone) {
+        Zone = zone;
     }
 }

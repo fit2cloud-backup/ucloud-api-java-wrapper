@@ -21,6 +21,15 @@ public class GetMetricsRequest extends Request {
     private String MetricNames;
     private Integer Limit;
     private Integer Offset;
+    private String ProjectId;
+
+    public String getProjectId() {
+        return ProjectId;
+    }
+
+    public void setProjectId(String projectId) {
+        ProjectId = projectId;
+    }
 
     public String getZone() {
         return Zone;

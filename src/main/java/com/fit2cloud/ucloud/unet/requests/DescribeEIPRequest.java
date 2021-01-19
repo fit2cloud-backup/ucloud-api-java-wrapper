@@ -67,14 +67,14 @@ public class DescribeEIPRequest extends Request {
     }
 
     @Override
-    public Map<String, String> toMap() {
+    public Map<String, Object> toMap() {
     	List<String> eipList = null;
     	if(EIPIds != null) {
     		eipList = new ArrayList<String>(EIPIds);
     		EIPIds = null;
     	}
         Type type = new TypeToken<HashMap<String, String>>(){}.getType();
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, Object> map = new HashMap<String, Object>();
 
         map.putAll(gson.<Map<? extends String, ? extends String>>fromJson(gson.toJson(Region),type));
         map.put("Offset", String.valueOf(Offset));

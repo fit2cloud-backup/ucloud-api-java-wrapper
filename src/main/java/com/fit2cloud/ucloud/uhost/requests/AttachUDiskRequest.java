@@ -10,14 +10,19 @@ import com.fit2cloud.ucloud.Request;
  * Email: xqiang.chi@samsung.com
  */
 public class AttachUDiskRequest extends Request {
+    private String Zone;
+    private String ProjectId;
     private String Region;
     private String UHostId;
     private String UDiskId;
 
+
     @Override
     public String toString() {
         return "AttachUDiskRequest{" +
-                "Region='" + Region + '\'' +
+                "Zone='" + Zone + '\'' +
+                ", ProjectId='" + ProjectId + '\'' +
+                ", Region='" + Region + '\'' +
                 ", UHostId='" + UHostId + '\'' +
                 ", UDiskId='" + UDiskId + '\'' +
                 '}';
@@ -47,5 +52,21 @@ public class AttachUDiskRequest extends Request {
 
     public void setRegion(String region) {
         Region = region;
+    }
+
+    public String getZone() {
+        return Zone;
+    }
+
+    public void setZone(String zone) {
+        Zone = zone;
+    }
+
+    public String getProjectId() {
+        return ProjectId;
+    }
+
+    public void setProjectId(String projectId) {
+        ProjectId = projectId;
     }
 }

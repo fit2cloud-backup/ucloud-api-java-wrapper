@@ -32,10 +32,28 @@ public class CreateUHostInstanceRequest extends Request {
     private String NetworkId;
     private String SecurityGroupId;
     private int Quantity;
-    private com.fit2cloud.ucloud.uhost.model.ChargeType ChargeType;
+    private String ChargeType;
+    private String VPCId;
+    private String SubnetId;
     private com.fit2cloud.ucloud.uhost.model.NetCapability NetCapability;
     private String tag;
     private int ProjectId;
+
+    public String getVPCId() {
+        return VPCId;
+    }
+
+    public void setVPCId(String VPCId) {
+        this.VPCId = VPCId;
+    }
+
+    public String getSubnetId() {
+        return SubnetId;
+    }
+
+    public void setSubnetId(String subnetId) {
+        SubnetId = subnetId;
+    }
 
     public String getRegion() {
         return Region;
@@ -141,11 +159,11 @@ public class CreateUHostInstanceRequest extends Request {
         SecurityGroupId = securityGroupId;
     }
 
-    public com.fit2cloud.ucloud.uhost.model.ChargeType getChargeType() {
+    public String getChargeType() {
         return ChargeType;
     }
 
-    public void setChargeType(com.fit2cloud.ucloud.uhost.model.ChargeType chargeType) {
+    public void setChargeType(String chargeType) {
         ChargeType = chargeType;
     }
 
@@ -189,10 +207,10 @@ public class CreateUHostInstanceRequest extends Request {
     }
 
     @Override
-    public Map<String, String> toMap() {
+    public Map<String, Object> toMap() {
         Type type = new TypeToken<HashMap<String, String>>() {
         }.getType();
-        Map<String, String> map = gson.fromJson(gson.toJson(this), type);
+        Map<String, Object> map = gson.fromJson(gson.toJson(this), type);
         map.remove("ProjectId");
         return map;
     }
