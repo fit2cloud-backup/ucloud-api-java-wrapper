@@ -12,6 +12,7 @@ import com.fit2cloud.ucloud.Request;
  */
 public class AllocateEIPRequest extends Request {
     private String Region;
+    private String ProjectId;
     private String OperatorName;
     private Integer Bandwidth;
     private String ChargeType;
@@ -57,10 +58,19 @@ public class AllocateEIPRequest extends Request {
         Quantity = quantity;
     }
 
+    public String getProjectId() {
+        return ProjectId;
+    }
+
+    public void setProjectId(String projectId) {
+        ProjectId = projectId;
+    }
+
     @Override
     public String toString() {
         return "AllocateEIPRequest{" +
                 "Region='" + Region + '\'' +
+                ", ProjectId='" + ProjectId + '\'' +
                 ", OperatorName='" + OperatorName + '\'' +
                 ", Bandwidth=" + Bandwidth +
                 ", ChargeType='" + ChargeType + '\'' +

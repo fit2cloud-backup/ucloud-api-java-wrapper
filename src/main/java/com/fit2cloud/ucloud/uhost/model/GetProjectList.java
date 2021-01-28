@@ -9,7 +9,7 @@ public class GetProjectList {
     private String ParentId;
     private String ParentName;
     private String CreateTime;
-    private String IsDefault;
+    private Boolean IsDefault;
     private String MemberCount;
     private String ResourceCount;
 
@@ -37,12 +37,12 @@ public class GetProjectList {
         CreateTime = createTime;
     }
 
-    public String getIsDefault() {
+    public Boolean getDefault() {
         return IsDefault;
     }
 
-    public void setIsDefault(String isDefault) {
-        IsDefault = isDefault;
+    public void setDefault(Boolean aDefault) {
+        IsDefault = aDefault;
     }
 
     public String getMemberCount() {

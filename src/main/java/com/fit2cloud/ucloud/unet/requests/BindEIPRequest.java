@@ -12,10 +12,10 @@ import com.fit2cloud.ucloud.Request;
  */
 public class BindEIPRequest extends Request {
     private String Region;
+    private String ProjectId;
     private String EIPId;
     private String ResourceType;
     private String ResourceId;
-
 
     public void setRegion(String Region) {
         this.Region = Region;
@@ -49,10 +49,19 @@ public class BindEIPRequest extends Request {
         return ResourceId;
     }
 
+    public String getProjectId() {
+        return ProjectId;
+    }
+
+    public void setProjectId(String projectId) {
+        ProjectId = projectId;
+    }
+
     @Override
     public String toString() {
         return "BindEIPRequest{" +
                 "Region='" + Region + '\'' +
+                ", ProjectId='" + ProjectId + '\'' +
                 ", EIPId='" + EIPId + '\'' +
                 ", ResourceType='" + ResourceType + '\'' +
                 ", ResourceId='" + ResourceId + '\'' +

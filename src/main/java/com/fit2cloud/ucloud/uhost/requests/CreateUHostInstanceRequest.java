@@ -37,7 +37,7 @@ public class CreateUHostInstanceRequest extends Request {
     private String SubnetId;
     private com.fit2cloud.ucloud.uhost.model.NetCapability NetCapability;
     private String tag;
-    private int ProjectId;
+    private String ProjectId;
 
     public String getVPCId() {
         return VPCId;
@@ -191,11 +191,12 @@ public class CreateUHostInstanceRequest extends Request {
         this.tag = tag;
     }
 
-    public int getProjectId() {
+    public String getProjectId() {
         return ProjectId;
     }
 
-    public void setProjectId(int projectId) {
+    public void setProjectId(String projectId) {
+        ProjectId = projectId;
     }
 
     public String getUHostType() {
@@ -211,7 +212,6 @@ public class CreateUHostInstanceRequest extends Request {
         Type type = new TypeToken<HashMap<String, String>>() {
         }.getType();
         Map<String, Object> map = gson.fromJson(gson.toJson(this), type);
-        map.remove("ProjectId");
         return map;
     }
 }

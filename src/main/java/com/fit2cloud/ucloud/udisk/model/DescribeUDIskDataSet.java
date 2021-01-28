@@ -41,10 +41,12 @@ public class DescribeUDIskDataSet {
 
     private int SnapshotLimit;
 
+    private String DiskType;
+
     public DescribeUDIskDataSet() {
     }
 
-    public DescribeUDIskDataSet(String UDiskId, String name, String size, String status, int createTime, int expiredTime, String UHostId, String UHostName, String UHostIp, String deviceName, String chargeType, String tag, String isExpire, String version, String UDataArkMode, int snapshotCount, int snapshotLimit) {
+    public DescribeUDIskDataSet(String UDiskId, String name, String size, String status, int createTime, int expiredTime, String UHostId, String UHostName, String UHostIp, String deviceName, String chargeType, String tag, String isExpire, String version, String UDataArkMode, int snapshotCount, int snapshotLimit,String DiskType) {
         this.UDiskId = UDiskId;
         Name = name;
         Size = size;
@@ -62,6 +64,7 @@ public class DescribeUDIskDataSet {
         this.UDataArkMode = UDataArkMode;
         SnapshotCount = snapshotCount;
         SnapshotLimit = snapshotLimit;
+        this.DiskType  = DiskType;
     }
 
     public String getUDiskId() {
@@ -206,5 +209,13 @@ public class DescribeUDIskDataSet {
 
     public void setZone(String zone) {
         Zone = zone;
+    }
+
+    public String getDiskType() {
+        return DiskType;
+    }
+
+    public void setDiskType(String diskType) {
+        DiskType = diskType;
     }
 }

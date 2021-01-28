@@ -23,6 +23,8 @@ public class DescribeUDiskRequest extends Request{
 
     private String az_group;
 
+    private int ProtocolVersion;
+
     public String getAz_group() {
         return az_group;
     }
@@ -85,5 +87,13 @@ public class DescribeUDiskRequest extends Request{
 
     public void setZone(String zone) {
         Zone = zone;
+    }
+
+    public int getProtocolVersion() {
+        return ProtocolVersion;
+    }
+
+    public void setProtocolVersion(int protocolVersion) {
+        ProtocolVersion = protocolVersion;
     }
 }
