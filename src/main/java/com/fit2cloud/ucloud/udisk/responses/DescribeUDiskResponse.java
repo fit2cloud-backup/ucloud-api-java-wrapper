@@ -12,8 +12,6 @@ public class DescribeUDiskResponse extends Response {
 
     private List<DescribeUDIskDataSet> DataSet;
 
-    private int TotalCount;
-
     private int TotalSnapshotCount;
 
     private int TotalSnapshotLimit;
@@ -24,16 +22,6 @@ public class DescribeUDiskResponse extends Response {
 
     public void setDataSet(List<DescribeUDIskDataSet> dataSet) {
         DataSet = dataSet;
-    }
-
-    @Override
-    public int getTotalCount() {
-        return TotalCount;
-    }
-
-    @Override
-    public void setTotalCount(int totalCount) {
-        TotalCount = totalCount;
     }
 
     public int getTotalSnapshotCount() {

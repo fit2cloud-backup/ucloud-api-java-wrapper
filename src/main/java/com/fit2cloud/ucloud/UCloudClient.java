@@ -5,6 +5,7 @@ import com.fit2cloud.ucloud.exception.UCloudServiceException;
 import com.fit2cloud.ucloud.udb.requests.*;
 import com.fit2cloud.ucloud.udb.responses.*;
 import com.fit2cloud.ucloud.udisk.requests.DescribeUDiskRequest;
+import com.fit2cloud.ucloud.udisk.responses.CreateUDiskResponse;
 import com.fit2cloud.ucloud.udisk.responses.DescribeUDiskResponse;
 import com.fit2cloud.ucloud.uhost.requests.*;
 import com.fit2cloud.ucloud.uhost.responses.*;
@@ -15,6 +16,8 @@ import com.fit2cloud.ucloud.unet.responses.*;
 import com.fit2cloud.ucloud.utils.GlobalConst;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.Map;
 
 /**
  * Created by chixq on 7/22/15.
@@ -255,7 +258,7 @@ public class UCloudClient {
     }
 
 //    UDB API
-    
+
     public UploadUDBParamGroupResponse UploadUDBParamGroup(UploadUDBParamGroupRequest request) throws UCloudClientException, UCloudServiceException {
         return gson.fromJson(this.request.execute("UploadUDBParamGroup", request.toMap()), UploadUDBParamGroupResponse.class);
     }
@@ -352,10 +355,30 @@ public class UCloudClient {
         return gson.fromJson(this.request.execute("ClearUDBLog", request.toMap()), ClearUDBLogResponse.class);
     }
 
-    public DescribeUDiskResponse DescribeUDisk(DescribeUDiskRequest request) throws UCloudClientException, UCloudServiceException {
-        return gson.fromJson(this.request.execute("DescribeUDisk",request.toMap()),DescribeUDiskResponse.class);
+    // UDisk API
+
+    public DescribeUDiskResponse describeUDisk(DescribeUDiskRequest request) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DescribeUDisk", request.toMap()), DescribeUDiskResponse.class);
     }
 
+    public CreateUDiskResponse createUDisk(Map<String, Object> params) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("CreateUDisk", params), CreateUDiskResponse.class);
+    }
 
+    public DescribeUDiskResponse resizeUDisk(Map<String, Object> params) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("ResizeUDisk", params), DescribeUDiskResponse.class);
+    }
+
+    public DetachUDiskResponse detachUDisk(Map<String, Object> params) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DetachUDisk", params), DetachUDiskResponse.class);
+    }
+
+    public AttachUDiskResponse attachUDisk(Map<String, Object> params) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("AttachUDisk", params), AttachUDiskResponse.class);
+    }
+
+    public DeleteUDiskResponse deleteUDisk(Map<String, Object> params) throws UCloudClientException, UCloudServiceException {
+        return gson.fromJson(this.request.execute("DeleteUDisk", params), DeleteUDiskResponse.class);
+    }
 }
 
